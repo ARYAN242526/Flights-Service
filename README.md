@@ -42,4 +42,3 @@ By executing the above command you will get migrations and seeders folder along 
 - To run the server execute:
    ```
    npm run dev
-```
