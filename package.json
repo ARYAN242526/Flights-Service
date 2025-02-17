@@ -1,5 +1,5 @@
 {
-  "name": "airline-booking-service",
+  "name": "flights-service",
   "version": "1.0.0",
   "description": "airline booking service project",
   "main": "index.js",
@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon src/index.js"
   },
-  "author": "\"Aryan\"",
+  "author": "Aryan Roy",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.7",
