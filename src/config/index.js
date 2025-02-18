@@ -1,3 +1,3 @@
-import Logger from './logger.config.js'
+import Logger from './logger.config.js';
 
-export {Logger}
+export default {Logger}

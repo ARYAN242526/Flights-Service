@@ -1,3 +1,4 @@
-import InfoController from './info.controller.js';
+import InfoController from './info-controller.js';
+import AirplaneController from './airplane-controller.js';
 
-export {InfoController}
+export {InfoController, AirplaneController}
