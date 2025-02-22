@@ -15,10 +15,16 @@ const Airplane = sequelize.define("Airplane", {
     modelNumber : {
         type: DataTypes.STRING,
         allowNull: false,
+        validate  : {
+            isAlphanumeric : true
+        },
     },
     capacity: {
         type: DataTypes.INTEGER,
         allowNull: false,
+       validate : {
+        max : 1000
+       }
     },
 }, {
     timestamps: true,
