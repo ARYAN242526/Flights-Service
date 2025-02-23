@@ -10,4 +10,7 @@ router.post('/' ,
        AirplaneMiddlewares.validateCreateRequest,
        AirplaneController.createAirplane);
 
+router.get('/',
+       AirplaneController.getAirplanes)       
+
 export default router;
