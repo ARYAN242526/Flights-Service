@@ -30,6 +30,12 @@ async function createAirplane(req,res) {
     }
 }
 
+/*
+POST : /airplanes/
+req-body {}
+
+*/
+
 async function getAirplanes(req,res) {
     try {
         const airplanes = await airplaneService.getAirplanes();
@@ -46,4 +52,29 @@ async function getAirplanes(req,res) {
     }
 }
 
-export  default {createAirplane,getAirplanes}
+/*
+POST : /airplanes/:id
+req-body {}
+*/
+
+async function getAirplane(req,res) {
+    try {
+        const airplane = await airplaneService.getAirplane(req.params.id);
+        SuccessResponse.data = airplane;
+        return res
+                .status(StatusCodes.OK)
+                .json(SuccessResponse);
+        
+    } catch (error) {
+        ErrorResponse.error  = error;
+        return res
+                .status(error.statusCode)
+                .json(ErrorResponse)
+    }
+}
+
+export default {
+    createAirplane,
+    getAirplanes,
+    getAirplane
+}
