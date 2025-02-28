@@ -7,7 +7,7 @@ class AirplaneService {
         this.airplaneRepository = new AirplaneRepository();
     }   
 
-  async  createAirplane(data){
+  async createAirplane(data){
     try {
         const airplane = await this.airplaneRepository.create(data);
         return airplane;
@@ -47,10 +47,20 @@ class AirplaneService {
         throw new AppError('Cannot fetch data of an airplane' , StatusCodes.INTERNAL_SERVER_ERROR);
     }
 
- }
-
 }
 
+async deleteAirplane(id){
+    try {
+        const response = await this.airplaneRepository.destroy(id);
+        return response;
+    } catch (error) {
+        if(error.statusCode == StatusCodes.NOT_FOUND){
+            throw new AppError('The airplane you requested to delete is not present' , error.statusCode);
+        }
+        throw new AppError('Cannot delete the requested airplane',StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
 
+}
 
 export default AirplaneService;

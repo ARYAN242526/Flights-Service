@@ -73,8 +73,31 @@ async function getAirplane(req,res) {
     }
 }
 
+/*
+DELETE : /airplanes/:id
+req-body {}
+
+*/
+
+async function deleteAirplane(req,res) {
+    try {
+        const airplane = await airplaneService.deleteAirplane(req.params.id);
+        SuccessResponse.data = airplane;
+        return res
+                .status(StatusCodes.OK)
+                .json(SuccessResponse);
+        
+    } catch (error) {
+        ErrorResponse.error  = error;
+        return res
+                .status(error.statusCode)
+                .json(ErrorResponse)
+    }
+}
+
 export default {
     createAirplane,
     getAirplanes,
-    getAirplane
+    getAirplane,
+    deleteAirplane
 }
