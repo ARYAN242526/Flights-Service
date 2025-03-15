@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import AirplaneRepository from "../repositories/index.js";
+import {AirplaneRepository} from "../repositories/index.js";
 import AppError from "../utils/errors/app-error.js";
 
 class AirplaneService {

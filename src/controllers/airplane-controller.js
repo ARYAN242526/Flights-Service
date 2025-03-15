@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
-import AirplaneService from '../services/index.js';
+import {AirplaneService} from '../services/index.js';
 import { SuccessResponse,ErrorResponse } from '../utils/common/index.js';
 
 const airplaneService = new AirplaneService();

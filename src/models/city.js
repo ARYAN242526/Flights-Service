@@ -1,27 +1,24 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class City extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  City.init({
-    name: {
-      type :  DataTypes.STRING,
-      allowNull : false,
+import { DataTypes , Sequelize } from "sequelize";
+import config from "../config/config.json" assert {type : 'json'} ; 
+
+const env  = process.env.NODE_ENV || "development";
+const dbConfig = config[env];
+
+
+const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
+  host: dbConfig.host,
+  dialect: dbConfig.dialect,
+  
+});
+
+const City = sequelize.define("City", {
+    name : {
+      type : DataTypes.STRING,
+      allowNull : false ,
       unique : true
     }
-  }, {
-    sequelize,
-    modelName: 'City',
-  });
-  return City;
-};
+}, {
+    timestamps: true,
+});
+
+export default City;

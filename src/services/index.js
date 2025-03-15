@@ -1,3 +1,3 @@
 import AirplaneService from './airplane-service.js';
-
-export default AirplaneService;
+import CityService from './city-service.js'
+export  {AirplaneService,CityService};
