@@ -24,6 +24,18 @@ class CityService {
             throw new AppError('Cannot create a new city object' , StatusCodes.INTERNAL_SERVER_ERROR);
         }
     }
+
+    async deleteCity(id){
+        try {
+            const response = await this.cityRepository.destroy(id);
+            return response;
+        } catch (error) {
+            if(error.statusCode == StatusCodes.NOT_FOUND){
+                throw new AppError('The city you requested to delete is not present' , error.statusCode);
+            }
+            throw new AppError('Cannot delete the requested city',StatusCodes.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
 
 export default CityService;

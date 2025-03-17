@@ -11,7 +11,7 @@ router.post('/',
     CityMiddlewares.validateCreateRequest,
      CityController.createCity);
 
-
+router.delete('/:id' , CityController.deleteCity);
 
 
 export default router;
