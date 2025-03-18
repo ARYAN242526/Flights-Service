@@ -47,7 +47,11 @@ class CrudRepository {
                 }
 
             });
-           
+            //Update returns an array with its first element as the no. of rows affected
+           if(!response[0]){
+            throw new AppError('Not able to find or update the resource' , StatusCodes.NOT_FOUND)
+           }
+
             return response;
         }
     
