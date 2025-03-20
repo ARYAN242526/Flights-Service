@@ -1,5 +1,7 @@
 import CrudRepository from "./crud-repository.js";
-import City from '../models/city.js';
+import models from '../models/index.js';
+
+const {City} = models;
 
 class CityRepository extends CrudRepository {
     constructor(){

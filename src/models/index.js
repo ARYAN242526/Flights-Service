@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 import config from "../config/config.json" assert { type: "json" };
-import cityModel from "./city.js";
-import airportModel from "./airport.js";
+import City from "./city.js";
+import Airport from "./airport.js";
 
 
 const env = process.env.NODE_ENV || "development";
@@ -13,14 +13,9 @@ const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.p
 });
 
 const models = {
-  City: cityModel,
-  Airport: airportModel,
+  City: City(sequelize),
+  Airport: Airport(sequelize),
 };
-
-// Initialize models
-Object.keys(models).forEach((modelName) => {
-  models[modelName] = models[modelName](sequelize);
-});
 
 // Apply associations
 Object.values(models).forEach((model) => {
