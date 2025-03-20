@@ -34,4 +34,11 @@ const Airport = sequelize.define("Airport", {
     timestamps: true,
 });
 
+Airport.associate = (models) => {
+  Airport.belongsTo(models.City , {
+    foreignKey : 'cityId',
+    as : 'city'
+  })
+}
+
 export default Airport;

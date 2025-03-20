@@ -30,4 +30,5 @@ const Airplane = sequelize.define("Airplane", {
     timestamps: true,
 });
 
+
 export default Airplane;

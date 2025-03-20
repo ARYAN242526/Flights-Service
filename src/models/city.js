@@ -21,4 +21,11 @@ const City = sequelize.define("City", {
     timestamps: true,
 });
 
+City.associate = (models) => {
+  City.hasMany(models.Airport , {
+    foreignKey : 'cityId',
+    as : 'airports'
+  })
+}
+
 export default City;
