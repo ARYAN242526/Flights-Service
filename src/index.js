@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended : true}))
 app.use('/api' , apiRoutes);
 
 
-app.listen(PORT , async() => {
+app.listen(PORT , () => {
     console.log(`Server is listening on PORT : ${PORT} `);
   
      

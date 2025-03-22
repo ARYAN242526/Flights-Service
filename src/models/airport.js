@@ -32,10 +32,15 @@ const Airport = (sequelize) => {
       as: "city", // Alias for joined data
       onDelete: "CASCADE", // If a City is deleted, its airports are removed
     });
-
+    AirportModel.hasMany(models.Flight, {
+      foreignkey : 'departureAirportId',
+      onDelete : 'CASCADE'
+    });
+    AirportModel.hasMany(models.Flight, {
+      foreignkey : 'arrivalAirportId',
+      onDelete : 'CASCADE'
+    });
   }
-   
-
   return AirportModel;
 };
 
