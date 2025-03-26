@@ -15,6 +15,11 @@ const Airport = (sequelize) => {
       type : DataTypes.STRING,
       allowNull : false
     },
+    address : {
+      type : DataTypes.STRING,
+      unique : true
+
+    },
     cityId: {
       type: DataTypes.INTEGER,
       references: {
@@ -33,11 +38,11 @@ const Airport = (sequelize) => {
       onDelete: "CASCADE", // If a City is deleted, its airports are removed
     });
     AirportModel.hasMany(models.Flight, {
-      foreignkey : 'departureAirportId',
+      foreignKey : 'departureAirportId',
       onDelete : 'CASCADE'
     });
     AirportModel.hasMany(models.Flight, {
-      foreignkey : 'arrivalAirportId',
+      foreignKey : 'arrivalAirportId',
       onDelete : 'CASCADE'
     });
   }

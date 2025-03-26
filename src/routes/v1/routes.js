@@ -4,11 +4,13 @@ import { InfoController } from "../../controllers/index.js";
 
 import airplaneRoutes from './airplane-routes.js';
 import cityRoutes from './city-routes.js';
+import airportRoutes from './airport-routes.js';
 
 const router = express.Router();
 
 router.use('/airplanes' , airplaneRoutes);
 router.use('/cities' , cityRoutes);
+router.use('/airports' , airportRoutes);
 
 
 router.get('/info', InfoController.info);

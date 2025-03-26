@@ -42,15 +42,15 @@ const Flight = (sequelize) => {
   // define associations
   FlightModel.associate = (models) => {
     FlightModel.belongsTo(models.Airplane, {
-      foreignkey : 'airplaneId',
+      foreignKey : 'airplaneId',
       as : 'airplaneDetail'
     });
     FlightModel.belongsTo(models.Airport , {
-      foreignkey : 'departureAirportId',
+      foreignKey : 'departureAirportId',
       as : 'departureAirport'
     });
     FlightModel.belongsTo(models.Airport , {
-      foreignkey : 'arrivalAirportId',
+      foreignKey : 'arrivalAirportId',
       as : 'arrivalAirport'
     });
 
