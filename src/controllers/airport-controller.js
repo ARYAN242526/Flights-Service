@@ -61,7 +61,7 @@ req-body {}
 
 async function getAirport(req,res) {
     try {
-        const airport = await airplaneService.getAirport(req.params.id);
+        const airport = await airportService.getAirport(req.params.id);
         SuccessResponse.data = airport;
         return res
                 .status(StatusCodes.OK)
@@ -83,7 +83,7 @@ req-body {}
 
 async function deleteAirport(req,res) {
     try {
-        const response = await airplaneService.deleteAirport(req.params.id);
+        const response = await airportService.deleteAirport(req.params.id);
         SuccessResponse.data = response;
         return res
                 .status(StatusCodes.OK)
