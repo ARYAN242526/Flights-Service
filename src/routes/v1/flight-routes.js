@@ -9,6 +9,9 @@ const router = express.Router();
 router.post('/' ,
        FlightMiddlewares.validateCreateRequest,
        FlightController.createFlight);
+// /api/v1/flights GET  
+router.get('/' ,
+       FlightController.getAllFlights);
        
 
 
