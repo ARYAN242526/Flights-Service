@@ -30,10 +30,19 @@ class FlightService {
  async getAllFlights(query){
     let customFilter = {};
     let sortFilter = [];
-    const tripDate = new Date(query.tripDate);
-    const tripDateStart = new Date(tripDate.setHours(0, 0, 0, 0)).toISOString();
-    const tripDateEnd = new Date(tripDate.setHours(23, 59, 59, 999)).toISOString();
-    // trips = MUM-DEL
+
+    let tripDateStart,tripDateEnd;
+    if(query.tripDate){
+        const tripDate = new Date(query.tripDate);
+        if(!isNaN(tripDate)){
+            tripDateStart = new Date(tripDate.setHours(0,0,0,0)).toISOString();
+            tripDateEnd = new Date(tripDate.setHours(23,59,59,599)).toISOString();
+        }
+        else {
+            throw new AppError("Invalid tripDate format. Expected YYYY-MM-DD.", StatusCodes.BAD_REQUEST);
+        }
+    }
+    // trips : DEL-MUM
     if(query.trips){
 
        const [departureAirportId,arrivalAirportId] = query.trips.split("-");
@@ -51,7 +60,7 @@ class FlightService {
             [Op.gte]: query.travellers
         }
     }
-    if(query.tripDate){
+    if(tripDateStart && tripDateEnd){
         customFilter.departureTime = {
             [Op.between] : [tripDateStart,tripDateEnd]
         }
@@ -65,6 +74,8 @@ class FlightService {
         const flights = await this.flightRepository.getAllFlights(customFilter,sortFilter);
         return flights;
     } catch (error) {
+      
+        
         throw new AppError('Cannot fetch data of all the flights' , StatusCodes.INTERNAL_SERVER_ERROR);
     }
  }

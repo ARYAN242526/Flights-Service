@@ -52,13 +52,14 @@ async function getAllFlights(req,res){
         const flights = await flightService.getAllFlights(req.query);
         SuccessResponse.data = flights;
         return res
-                .status(StatusCodes.CREATED)
+                .status(StatusCodes.OK)
                 .json(SuccessResponse)
         
     } catch (error) {
+        
         ErrorResponse.error  = error;
         return res
-                .status(error.statusCode)
+                .status(error.statusCode || StatusCodes.INTERNAL_SERVER_ERROR)
                 .json(ErrorResponse)
     }
 }
