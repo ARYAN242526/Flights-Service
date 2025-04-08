@@ -4,6 +4,7 @@ import City from "./city.js";
 import Airport from "./airport.js";
 import Flight from "./flight.js";
 import Airplane from "./airplane.js";
+import Seat  from "./seat.js";
 
 
 const env = process.env.NODE_ENV || "development";
@@ -19,6 +20,7 @@ const models = {
   Airport: Airport(sequelize),
   Flight : Flight(sequelize),
   Airplane : Airplane(sequelize),
+  Seat : Seat(sequelize)
 };
 
 // Apply associations

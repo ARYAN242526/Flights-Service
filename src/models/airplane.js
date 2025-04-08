@@ -25,6 +25,10 @@ const Airplane = (sequelize) => {
             foreignKey : 'airplaneId',
             onDelete : 'CASCADE'
         });
+        AirplaneModel.hasMany(models.Seat,{
+            foreignKey : 'airplaneId',
+            onDelete : 'CASCADE'
+        })
     }
 
     return AirplaneModel;
